@@ -251,6 +251,22 @@ O sistema deverá gerar relatórios gerenciais sobre:
 
    **Exemplos:**
 
+   
+
+1. Segurança: Monitorará os caminhões via satélite, fará backup dos dados automaticamente, além de pedir usuário e senha fará um reconhecimento do usuário através de impressão digital.  
+     
+2. Performance: As telas terão um tempo de resposta estimado em 20s, tanto em consulta em banco de dados quanto em outros dados solicitados pelo usuário.  
+     
+     
+3. Usabilidade: Descreve os requisitos não-funcionais associados à facilidade de uso do sistema.  
+     
+4. Confiabilidade: executará uma busca para detectar duplicidade nos dados, erros no sistema, não proibirá o usuário de cadastrar uma determinada quantidade de clientes, avisa aos usuários do sistema quando houver um atraso na entrega da mercadoria, quando tiver mudanças na rota dos veículos, pois cada veículo terá um chip de identificação.  
+     
+     
+5. Padrões: Terá padrão ANSI e ISO 9001\.  
+     
+6. Hardware e Software: Funcionará com Windows 98/2000/NT/XP e Linux, o computador tem que ter no mínimo 2GB de memória RAM, um HDD 120GB, placa de rede, placa de vídeo, processador Pentium 4, deverá ter um servidor para disponibilizar o software para mais de um usuário.
+
    1. ## \<RNF001\>\<Segurança \>
 
 *O acesso ao sistema deverá ocorrer mediante autenticação por usuário e senha.* 
