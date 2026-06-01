@@ -295,3 +295,27 @@ Para encerrar, o pacote entregue cobre o ciclo completo de teste. Partimos de 23
 ---
 
 *Apresentação — Teste e Qualidade de Software | CEUB | Junho 2026*
+
+---
+
+## Divisão da Apresentação
+
+| Slide | Tema | Apresentador |
+|---|---|---|
+| 1 | Capa | — |
+| 2 | Visão Geral do Processo | **Camila** |
+| 3 | A01 — Contexto do Sistema | **Camila** |
+| 4 | A01 — Requisitos Funcionais | **Camila** |
+| 5 | A01 — Requisitos Não Funcionais | **Camila** |
+| 6 | A02 — Casos de Uso (visão geral) | **Enzo** |
+| 7 | A02 — UC006 em Detalhe | **Enzo** |
+| 8 | A03 — Plano de Teste | **Enzo** |
+| 9 | A03 — Massa de Dados e Testes NF | **Enzo** |
+| 10 | A04 — Cenários de Teste | **Camila** |
+| 11 | A05 — Roteiro de Execução | **Camila** |
+| 12 | A06 — Rastreabilidade (Matriz RF) | **Enzo** |
+| 13 | A06 — Exemplos de Casos de Teste | **Enzo** |
+| 14 | Encerramento | **Camila** |
+
+**Camila:** Slides 1–5, 10–11, 14 → abertura, requisitos, cenários/roteiro e encerramento (~25 min)  
+**Enzo:** Slides 6–9, 12–13 → casos de uso, plano de teste e casos de teste formais (~25 min)
