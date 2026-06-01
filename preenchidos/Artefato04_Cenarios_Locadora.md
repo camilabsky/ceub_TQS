@@ -18,7 +18,7 @@
 ![][image1]
 **Implementação de Cenários de Teste**
 
-# **Caso de Uso 006: Realizar Locação de Veículo**
+# **Cenários de Teste Funcional — UC006: Realizar Locação de Veículo**
 
 * ### **Fluxo Principal**
 
@@ -77,13 +77,13 @@
 
 | Cenário | Caso de Teste | Entradas | Resultado Esperado |
 | :---- | :---- | :---- | :---- |
-| Cenário 1 | CT01 - Abrir tela de locação | Atendente autenticado acessa a funcionalidade de locação | Sistema apresenta tela de locação com cliente, veículo, período e pagamento |
-| Cenário 1 | CT02 - Locação realizada com sucesso | Cliente válido, veículo disponível, 3 dias, cartão de crédito | Locação registrada, quilometragem inicial gravada e veículo alterado para status "Alugado" |
-| Cenário 1 | CT03 - Cálculo da locação | Diária = R$ 150,00 e 3 dias | Valor total de R$ 450,00 |
-| Cenário 2 | CT04 - Cancelar locação | Selecionar botão "Cancelar" antes da confirmação | Operação encerrada sem gravação da locação |
-| Cenário 3 | CT05 - Cliente com locação ativa | Cliente já possui contrato aberto | Mensagem "Cliente já possui locação em aberto." e bloqueio da locação |
-| Cenário 4 | CT06 - Veículo acima de 80.000 km | Veículo com 82.000 km | Mensagem "Veículo indisponível para locação." |
-| Cenário 4 | CT07 - Veículo acima de 4 anos | Veículo com mais de 4 anos de uso | Mensagem "Veículo indisponível para locação." |
+| Cenário 1 | CT001 - Abrir tela de locação | Atendente autenticado acessa a funcionalidade de locação | Sistema apresenta tela de locação com cliente, veículo, período e pagamento |
+| Cenário 1 | CT002 - Locação realizada com sucesso | Cliente válido, veículo disponível, 3 dias, cartão de crédito | Locação registrada, quilometragem inicial gravada e veículo alterado para status "Alugado" |
+| Cenário 1 | CT003 - Cálculo da locação | Diária = R$ 150,00 e 3 dias | Valor total de R$ 450,00 |
+| Cenário 2 | CT004 - Cancelar locação | Selecionar botão "Cancelar" antes da confirmação | Operação encerrada sem gravação da locação |
+| Cenário 3 | CT005 - Cliente com locação ativa | Cliente já possui contrato aberto | Mensagem "Cliente já possui locação em aberto." e bloqueio da locação |
+| Cenário 4 | CT006 - Veículo acima de 80.000 km | Veículo com 82.000 km | Mensagem "Veículo indisponível para locação." |
+| Cenário 4 | CT007 - Veículo acima de 4 anos | Veículo com mais de 4 anos de uso | Mensagem "Veículo indisponível para locação." |
 
 # **Critérios de Sucesso**
 

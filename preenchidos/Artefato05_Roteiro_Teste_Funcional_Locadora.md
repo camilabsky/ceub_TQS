@@ -2,7 +2,7 @@
 
 # **Artefato 05**
 
-# **Especificação do Roteiro de Teste Funcional**
+# **Roteiro de Teste Funcional — UC006: Realizar Locação de Veículo**
 
 **Laboratório de Teste Artefato 05 (2ª Avaliação)**
 
@@ -84,7 +84,7 @@ Este roteiro abrange os seguintes tipos de teste:
 
 ### **3.1 Cenário: Realizar Locação com Sucesso**
 
-#### **CT01 - Abrir tela de locação**
+#### **CT001 - Abrir tela de locação**
 
 ##### **3.1.1 Descrição**
 
@@ -107,7 +107,7 @@ O objetivo deste caso de teste é verificar se o sistema apresenta corretamente 
 
 Tela de locação exibida e pronta para preenchimento.
 
-#### **CT02 - Realizar locação com sucesso**
+#### **CT002 - Realizar locação com sucesso**
 
 ##### **3.1.1 Descrição**
 
@@ -145,7 +145,7 @@ O objetivo deste caso de teste é verificar se o sistema registra corretamente a
 - Veículo indisponível para novas locações.
 - Quilometragem inicial armazenada no sistema.
 
-#### **CT03 - Validar cálculo da locação**
+#### **CT003 - Validar cálculo da locação**
 
 ##### **3.1.1 Descrição**
 
@@ -173,7 +173,7 @@ Valor total da locação calculado corretamente e apresentado ao atendente.
 
 ### **3.2 Cenário: Cancelar Locação**
 
-#### **CT04 - Cancelar locação**
+#### **CT004 - Cancelar locação**
 
 ##### **3.2.1 Descrição**
 
@@ -181,6 +181,9 @@ O objetivo deste caso de teste é verificar se o sistema encerra a operação qu
 
 ##### **3.2.2 Pré-condição**
 
+- Atendente autenticado no sistema.
+- Cliente cadastrado e elegível para locação.
+- Veículo cadastrado e disponível para locação.
 - Tela de locação aberta.
 - Dados da locação em preenchimento.
 
@@ -199,7 +202,7 @@ Nenhuma locação registrada no sistema.
 
 ### **3.3 Cenário: Cliente com Locação Ativa**
 
-#### **CT05 - Bloqueio por locação ativa**
+#### **CT005 - Bloqueio por locação ativa**
 
 ##### **3.3.1 Descrição**
 
@@ -226,7 +229,7 @@ Nova locação não registrada.
 
 ### **3.4 Cenário: Veículo Não Apto para Locação**
 
-#### **CT06 - Bloqueio por quilometragem acima do limite**
+#### **CT006 - Bloqueio por quilometragem acima do limite**
 
 ##### **3.4.1 Descrição**
 
@@ -234,6 +237,7 @@ O objetivo deste caso de teste é verificar se o sistema impede a locação de u
 
 ##### **3.4.2 Pré-condição**
 
+- Atendente autenticado no sistema.
 - Veículo cadastrado com quilometragem superior a 80.000 km.
 - Cliente apto para locação.
 
@@ -252,7 +256,7 @@ O objetivo deste caso de teste é verificar se o sistema impede a locação de u
 
 Locação não registrada para o veículo selecionado.
 
-#### **CT07 - Bloqueio por veículo com mais de 4 anos**
+#### **CT007 - Bloqueio por veículo com mais de 4 anos**
 
 ##### **3.4.1 Descrição**
 
@@ -260,6 +264,7 @@ O objetivo deste caso de teste é verificar se o sistema impede a locação de u
 
 ##### **3.4.2 Pré-condição**
 
+- Atendente autenticado no sistema.
 - Veículo cadastrado com mais de 4 anos de uso.
 - Cliente apto para locação.
 

@@ -19,6 +19,7 @@
 
 | Data | Versão | Autor | Descrição |
 | :---- | :---- | :---- | :---- |
+| 01/06/2026 | 2.1 | Enzo Nardelli Ribeiro, Camila Bontempo Sidersky | Inclusão de cobertura de RF001-RF005, RF008, RF009, RF011, RF013 e RF015. Ajustes de consistência entre artefatos. |
 | 31/05/2026 | 2.0 | Enzo Nardelli Ribeiro, Camila Bontempo Sidersky | Artefato 06 completo com 11 casos de teste (CT001-CT011). |
 | 31/05/2026 | 1.0 | Enzo Nardelli Ribeiro, Camila Bontempo Sidersky | Versão inicial com estrutura base. |
 
@@ -53,11 +54,21 @@ O objetivo é garantir a rastreabilidade entre requisitos, casos de uso e testes
 
 | Especificação de Requisitos | ID dos Casos de Teste |
 | :---- | :---- |
+| RF001 – Autenticação de Usuários | CT012 |
+| RF002 – Cadastro de Funcionários | CT013 |
+| RF003 – Consulta de Funcionários | CT014 |
+| RF004 – Alteração de Funcionários | CT015 |
+| RF005 – Exclusão de Funcionários | CT016 |
 | RF006 – Cadastro Cliente PF | CT001 |
 | RF007 – Cadastro Cliente PJ | CT002 |
+| RF008 – Consulta de Clientes | CT017 |
+| RF009 – Alteração de Clientes | CT018 |
 | RF010 – Cadastro de Veículo | CT003 |
+| RF011 – Cadastro de Acessórios | CT019 |
 | RF012 – Consulta de Veículos | CT004 |
+| RF013 – Controle de Disponibilidade | CT020 |
 | RF014 – Realizar Locação | CT005 |
+| RF015 – Seleção de Forma de Pagamento | CT021 |
 | RF016 – Registro Quilometragem Inicial | CT005 |
 | RF017 – Registrar Devolução | CT006 |
 | RF018 – Registro Quilometragem Final | CT006 |
@@ -71,11 +82,17 @@ O objetivo é garantir a rastreabilidade entre requisitos, casos de uso e testes
 
 | ID dos Casos de Uso | ID dos Casos de Teste |
 | :---- | :---- |
+| UC00 – Efetuar Login | CT012 |
+| UC00 – Gerenciar Funcionários | CT013, CT014, CT015, CT016 |
 | UC01 – Cadastrar Cliente PF | CT001 |
 | UC02 – Cadastrar Cliente PJ | CT002 |
+| UC02 – Consultar/Alterar Clientes | CT017, CT018 |
 | UC03 – Cadastrar Veículo | CT003 |
+| UC03 – Cadastrar Acessórios | CT019 |
 | UC04 – Consultar Veículos | CT004 |
+| UC04 – Controlar Disponibilidade | CT020 |
 | UC05 – Realizar Locação | CT005, CT007, CT008, CT009, CT010 |
+| UC05 – Selecionar Forma de Pagamento | CT021 |
 | UC06 – Registrar Devolução | CT006 |
 | UC07 – Emitir Relatórios | CT011 |
 
@@ -94,7 +111,7 @@ O objetivo é garantir a rastreabilidade entre requisitos, casos de uso e testes
 | :---- | :---- |
 | 01 | Acessar menu "Clientes" |
 | 02 | Selecionar "Novo Cliente PF" |
-| 03 | Informar dados válidos (nome, CPF, endereço, telefone) |
+| 03 | Informar dados válidos obrigatórios (nome, sexo, CPF, RG, data de nascimento, CNH e endereço) |
 | 04 | Confirmar cadastro |
 | 05 | Sistema grava informações no banco de dados |
 | 06 | Sistema exibe mensagem de sucesso |
@@ -112,7 +129,7 @@ O objetivo é garantir a rastreabilidade entre requisitos, casos de uso e testes
 | :---- | :---- |
 | 01 | Acessar menu "Clientes" |
 | 02 | Selecionar "Novo Cliente PJ" |
-| 03 | Informar dados válidos (razão social, CNPJ, endereço, telefone) |
+| 03 | Informar dados válidos obrigatórios (nome fantasia, razão social, CNPJ e endereço) |
 | 04 | Confirmar cadastro |
 | 05 | Sistema grava informações no banco de dados |
 | 06 | Sistema exibe mensagem de sucesso |
@@ -170,7 +187,7 @@ O objetivo é garantir a rastreabilidade entre requisitos, casos de uso e testes
 | 05 | Sistema calcula valor total |
 | 06 | Atendente confirma locação |
 | 07 | Sistema registra quilometragem inicial do veículo |
-| 08 | Contrato de locação é gerado e impresso |
+| 08 | Sistema altera o status do veículo para "Alugado" |
 
 ---
 
@@ -186,7 +203,7 @@ O objetivo é garantir a rastreabilidade entre requisitos, casos de uso e testes
 | 01 | Acessar tela de "Devolução de Veículo" |
 | 02 | Localizar contrato de locação ativa |
 | 03 | Registrar quilometragem final do veículo |
-| 04 | Sistema calcula valores finais (multas, adicionais, etc.) |
+| 04 | Sistema valida registro da devolução e encerra a locação |
 | 05 | Sistema exibe resumo da devolução |
 | 06 | Confirmar encerramento do contrato |
 
@@ -204,10 +221,10 @@ O objetivo é garantir a rastreabilidade entre requisitos, casos de uso e testes
 | 01 | Selecionar cliente válido |
 | 02 | Selecionar veículo disponível |
 | 03 | Informar diária de R$ 150,00 |
-| 04 | Informar período de 5 dias |
+| 04 | Informar período de 3 dias |
 | 05 | Confirmar locação |
-| 06 | Sistema realiza cálculo automático (5 × 150 = 750) |
-| 07 | Sistema apresenta valor total de R$ 750,00 |
+| 06 | Sistema realiza cálculo automático (3 × 150 = 450) |
+| 07 | Sistema apresenta valor total de R$ 450,00 |
 
 ---
 
@@ -253,7 +270,7 @@ O objetivo é garantir a rastreabilidade entre requisitos, casos de uso e testes
 
 | **Descrição** | Validar bloqueio de locação por idade do veículo. |
 | :---- | :---- |
-| **Pré-condição** | Veículo com mais de 4 anos de uso (anterior a 2022). |
+| **Pré-condição** | Veículo com ano de fabricação 2020 (mais de 4 anos de uso). |
 | **Pós-condição** | Operação bloqueada com mensagem apropriada. |
 
 | Passo | Verificação |
@@ -286,15 +303,194 @@ O objetivo é garantir a rastreabilidade entre requisitos, casos de uso e testes
 
 ---
 
+### 3.12. [CT012] – Login Válido
+
+| **Descrição** | Validar autenticação com credenciais corretas. |
+| :---- | :---- |
+| **Pré-condição** | Usuário ativo cadastrado no sistema. |
+| **Pós-condição** | Usuário autenticado e sessão iniciada. |
+
+| Passo | Verificação |
+| :---- | :---- |
+| 01 | Acessar tela de login |
+| 02 | Informar usuário válido |
+| 03 | Informar senha correta |
+| 04 | Clicar em "Entrar" |
+| 05 | Sistema valida credenciais |
+| 06 | Sistema redireciona para tela inicial |
+
+---
+
+### 3.13. [CT013] – Cadastro de Funcionário com Sucesso
+
+| **Descrição** | Validar cadastro de funcionário com dados obrigatórios. |
+| :---- | :---- |
+| **Pré-condição** | Usuário autenticado com permissão administrativa. |
+| **Pós-condição** | Funcionário cadastrado e disponível para consulta. |
+
+| Passo | Verificação |
+| :---- | :---- |
+| 01 | Acessar menu "Funcionários" |
+| 02 | Selecionar "Novo Funcionário" |
+| 03 | Informar CPF, nome, RG, endereço, telefone, gênero e data de nascimento |
+| 04 | Confirmar cadastro |
+| 05 | Sistema grava os dados |
+| 06 | Sistema exibe mensagem de sucesso |
+
+---
+
+### 3.14. [CT014] – Consulta de Funcionário por CPF
+
+| **Descrição** | Validar busca de funcionário por CPF cadastrado. |
+| :---- | :---- |
+| **Pré-condição** | Funcionário previamente cadastrado no sistema. |
+| **Pós-condição** | Dados do funcionário exibidos corretamente. |
+
+| Passo | Verificação |
+| :---- | :---- |
+| 01 | Acessar menu "Funcionários" |
+| 02 | Selecionar opção "Consultar" |
+| 03 | Informar CPF válido cadastrado |
+| 04 | Solicitar pesquisa |
+| 05 | Sistema localiza o funcionário |
+| 06 | Sistema exibe os dados correspondentes |
+
+---
+
+### 3.15. [CT015] – Alteração de Dados de Funcionário
+
+| **Descrição** | Validar alteração de dados cadastrais de funcionário. |
+| :---- | :---- |
+| **Pré-condição** | Funcionário previamente cadastrado e usuário autorizado. |
+| **Pós-condição** | Dados alterados com sucesso no sistema. |
+
+| Passo | Verificação |
+| :---- | :---- |
+| 01 | Acessar menu "Funcionários" |
+| 02 | Localizar funcionário por CPF |
+| 03 | Alterar campo endereço |
+| 04 | Confirmar alteração |
+| 05 | Sistema persiste os novos dados |
+| 06 | Sistema exibe mensagem de atualização concluída |
+
+---
+
+### 3.16. [CT016] – Exclusão de Funcionário
+
+| **Descrição** | Validar exclusão de funcionário cadastrado. |
+| :---- | :---- |
+| **Pré-condição** | Funcionário cadastrado e sem vínculo impeditivo. |
+| **Pós-condição** | Funcionário marcado como excluído/inativo. |
+
+| Passo | Verificação |
+| :---- | :---- |
+| 01 | Acessar menu "Funcionários" |
+| 02 | Localizar funcionário alvo |
+| 03 | Selecionar opção "Excluir" |
+| 04 | Confirmar operação |
+| 05 | Sistema executa exclusão lógica do registro |
+| 06 | Sistema informa exclusão com sucesso |
+
+---
+
+### 3.17. [CT017] – Consulta de Cliente
+
+| **Descrição** | Validar consulta de clientes PF/PJ cadastrados. |
+| :---- | :---- |
+| **Pré-condição** | Cliente previamente cadastrado. |
+| **Pós-condição** | Cliente exibido conforme filtro informado. |
+
+| Passo | Verificação |
+| :---- | :---- |
+| 01 | Acessar menu "Clientes" |
+| 02 | Selecionar opção "Consultar" |
+| 03 | Informar filtro por CPF ou CNPJ |
+| 04 | Solicitar pesquisa |
+| 05 | Sistema retorna os dados do cliente |
+
+---
+
+### 3.18. [CT018] – Alteração de Endereço do Cliente
+
+| **Descrição** | Validar alteração de endereço de cliente cadastrado. |
+| :---- | :---- |
+| **Pré-condição** | Cliente cadastrado e usuário autorizado. |
+| **Pós-condição** | Endereço atualizado no cadastro do cliente. |
+
+| Passo | Verificação |
+| :---- | :---- |
+| 01 | Acessar menu "Clientes" |
+| 02 | Localizar cliente por CPF/CNPJ |
+| 03 | Editar campo endereço |
+| 04 | Confirmar alteração |
+| 05 | Sistema salva o novo endereço |
+| 06 | Sistema apresenta mensagem de atualização concluída |
+
+---
+
+### 3.19. [CT019] – Cadastro de Acessório em Veículo
+
+| **Descrição** | Validar associação de acessório a veículo cadastrado. |
+| :---- | :---- |
+| **Pré-condição** | Veículo previamente cadastrado no sistema. |
+| **Pós-condição** | Acessório vinculado ao veículo com sucesso. |
+
+| Passo | Verificação |
+| :---- | :---- |
+| 01 | Acessar menu "Frota" |
+| 02 | Selecionar veículo existente |
+| 03 | Selecionar opção "Adicionar acessório" |
+| 04 | Informar acessório válido |
+| 05 | Confirmar inclusão |
+| 06 | Sistema registra vínculo do acessório ao veículo |
+
+---
+
+### 3.20. [CT020] – Controle de Disponibilidade do Veículo
+
+| **Descrição** | Validar atualização e consulta do status de disponibilidade. |
+| :---- | :---- |
+| **Pré-condição** | Veículo cadastrado com status inicial conhecido. |
+| **Pós-condição** | Status atualizado e refletido na consulta de veículos. |
+
+| Passo | Verificação |
+| :---- | :---- |
+| 01 | Acessar menu "Frota" |
+| 02 | Selecionar veículo cadastrado |
+| 03 | Alterar status para "Em negociação" |
+| 04 | Confirmar alteração |
+| 05 | Sistema atualiza o status |
+| 06 | Consulta de veículos reflete novo status |
+
+---
+
+### 3.21. [CT021] – Seleção de Forma de Pagamento na Locação
+
+| **Descrição** | Validar seleção de forma de pagamento no processo de locação. |
+| :---- | :---- |
+| **Pré-condição** | Cliente elegível e veículo apto para locação. |
+| **Pós-condição** | Forma de pagamento registrada junto à locação. |
+
+| Passo | Verificação |
+| :---- | :---- |
+| 01 | Acessar tela de "Nova Locação" |
+| 02 | Selecionar cliente e veículo válidos |
+| 03 | Informar período da locação |
+| 04 | Selecionar forma de pagamento (cartão, dinheiro ou PIX) |
+| 05 | Confirmar operação |
+| 06 | Sistema registra a forma de pagamento escolhida |
+
+---
+
 ## 4. Critérios de Aprovação {#critérios-de-aprovação}
 
 O sistema será considerado **aprovado** quando:
 
-- Todos os casos de teste (CT001 a CT011) forem executados com sucesso;
+- Todos os casos de teste (CT001 a CT021) forem executados com sucesso;
 - Todos os resultados obtidos coincidirem com os resultados esperados;
 - Nenhuma regra de negócio for violada durante a execução;
 - Não existirem defeitos críticos ou bloqueantes;
-- Todos os requisitos funcionais (RF006 a RF023) estiverem cobertos e validados pelos testes;
+- Todos os requisitos funcionais (RF001 a RF023) estiverem cobertos e validados pelos testes;
 - As restrições de negócio (locação simultânea, quilometragem, idade do veículo) estiverem funcionando corretamente;
 - Os cálculos de locação forem precisos e sem erros.
 

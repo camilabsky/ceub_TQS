@@ -51,6 +51,18 @@ Brasília - DF
 | 5 | Regras de negócio devem ser respeitadas |
 | 6 | Não deve haver cadastro duplicado de CPF, CNPJ, CNH e placa |
 
+### 5. Massa de Dados de Referência
+
+| Entidade | Atributo | Valor Válido | Valor Inválido |
+| :--- | :--- | :--- | :--- |
+| Cliente PF | CPF | 987.654.321-00 | 111.111.111-11 |
+| Cliente PJ | CNPJ | 11.222.333/0001-99 | 00.000.000/0000-00 |
+| Veículo | Placa | ABC1D23 | ABC-1234 |
+| Veículo | Quilometragem | 25.000 km | 82.000 km |
+| Veículo | Ano de fabricação | 2024 | 2020 |
+| Locação | Valor da diária | R$ 150,00 | R$ 0,00 |
+| Locação | Período | 3 dias | 0 dias |
+
 # Especificações dos Testes Funcionais
 
 ## 2.1 Especificação do teste - EFETUAR LOGIN
@@ -95,7 +107,7 @@ Brasília - DF
 | 1 | Sistema deve autenticar usuário válido |
 | 2 | Sistema deve bloquear acesso inválido com mensagem adequada |
 
-### 2.1.7 Especificação dos Casos de Teste
+### 2.1.7 Resumo narrativo dos Casos de Teste
 
 #### 2.1.7.1 Caso de teste: "Login válido"
 
@@ -208,7 +220,7 @@ Brasília - DF
 | 1 | Cadastro válido deve ser concluído com sucesso |
 | 2 | CPF duplicado deve ser bloqueado |
 
-### 2.2.7 Especificação dos Casos de Teste
+### 2.2.7 Resumo narrativo dos Casos de Teste
 
 #### 2.2.7.1 Caso de teste: "Cadastro válido de funcionário"
 
@@ -326,7 +338,7 @@ Brasília - DF
 | 1 | Cadastros válidos devem ser persistidos |
 | 2 | Duplicidade documental deve ser bloqueada |
 
-### 2.3.7 Especificação dos Casos de Teste
+### 2.3.7 Resumo narrativo dos Casos de Teste
 
 #### 2.3.7.1 Caso de teste: "Cadastro PF válido"
 
@@ -441,7 +453,7 @@ Brasília - DF
 | 1 | Cadastro válido deve concluir sem erros |
 | 2 | Placa ou chassi duplicado deve ser rejeitado |
 
-### 2.4.7 Especificação dos Casos de Teste
+### 2.4.7 Resumo narrativo dos Casos de Teste
 
 #### 2.4.7.1 Caso de teste: "Cadastro válido de veículo"
 
@@ -553,7 +565,7 @@ Brasília - DF
 | 1 | Mudança de status deve refletir corretamente |
 | 2 | Bloqueios por regras de frota devem ser aplicados |
 
-### 2.5.7 Especificação dos Casos de Teste
+### 2.5.7 Resumo narrativo dos Casos de Teste
 
 #### 2.5.7.1 Caso de teste: "Atualização válida de status"
 
@@ -601,7 +613,7 @@ Brasília - DF
 | :---- | ----- | ----- |
 | **Itens a testar** | Regra de bloqueio por quilometragem acima de 80.000 km. |  |
 | **Entradas** | **Campo** | **Valor** |
-|  | Quilometragem | 85000 |
+|  | Quilometragem | 82000 |
 |  | Status desejado | Disponível para locação |
 | **Saídas esperadas** | **Campo** | **Valor** |
 |  | Mensagem | Veículo indisponível por quilometragem |
@@ -670,7 +682,7 @@ Corresponde ao Caso de Uso 006 - Realizar Locação de Veículo.
 | 2 | Sistema deve impedir segunda locação ativa para o mesmo cliente |
 | 3 | Valor deve ser calculado corretamente |
 
-### 2.6.7 Especificação dos Casos de Teste
+### 2.6.7 Resumo narrativo dos Casos de Teste
 
 #### 2.6.7.1 Caso de teste: "Locação concluída com sucesso"
 
@@ -782,7 +794,7 @@ Corresponde ao Caso de Uso 006 - Realizar Locação de Veículo.
 | 1 | Devolução válida deve encerrar locação |
 | 2 | Km final inválida deve gerar erro e impedir encerramento |
 
-### 2.7.7 Especificação dos Casos de Teste
+### 2.7.7 Resumo narrativo dos Casos de Teste
 
 #### 2.7.7.1 Caso de teste: "Devolução concluída com sucesso"
 
@@ -873,7 +885,7 @@ Corresponde ao Caso de Uso 006 - Realizar Locação de Veículo.
 | 2 | Sistema deve informar quando não houver resultados |
 | 3 | Tempo de resposta deve atender requisito de desempenho |
 
-### 2.8.7 Especificação dos Casos de Teste
+### 2.8.7 Resumo narrativo dos Casos de Teste
 
 #### 2.8.7.1 Caso de teste: "Relatório com resultados"
 
@@ -920,6 +932,15 @@ Corresponde ao Caso de Uso 006 - Realizar Locação de Veículo.
 |  | Resultado | Lista vazia |
 | **Estado alcançado** | Relatório processado com mensagem de ausência de dados. |  |
 | **Procedimentos** | LOC-REL-PT-02 |  |
+
+## 3. Testes Não-Funcionais (Teóricos)
+
+| RNF | Tipo de teste | Como seria validado |
+| :--- | :--- | :--- |
+| RNF004 - Desempenho | Performance | Medir o tempo de geração do relatório de locações com 1.000 registros. Critério de aceite: até 3 segundos. |
+| RNF008 - Compatibilidade | Compatibilidade | Executar CT001 e CT005 nos navegadores Chrome, Firefox e Edge, comparando comportamento e mensagens. |
+| RNF009 - Confiabilidade | Confiabilidade | Tentar cadastrar dois clientes com o mesmo CPF em sequência rápida. Resultado esperado: segundo cadastro bloqueado. |
+
 
 
 

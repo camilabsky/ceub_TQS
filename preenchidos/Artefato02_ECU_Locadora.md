@@ -12,6 +12,7 @@ Especificação de Caso de Uso
 | 31/05/2026 | 1.1 | Padronização do conteúdo | Enzo e Camila |
 | 31/05/2026 | 1.2 | Revisão do Caso de Uso 006 | Enzo e Camila |
 | 31/05/2026 | 1.3 | Versão final para entrega | Enzo e Camila |
+| 31/05/2026 | 1.4 | Harmonização dos atores do UC006 (cliente como ator secundário) | Enzo e Camila |
 
 # **Especificação de Caso de Uso**
 
@@ -358,7 +359,8 @@ Este caso de uso descreve o processo de locação de um veículo para cliente ap
 
 ## **Atores Envolvidos**
 
-Atendente, Cliente
+- Ator primário: Atendente
+- Ator secundário: Cliente (fornece dados para a locação, sem interação direta com o sistema)
 
 ## **Prototipo**
 
